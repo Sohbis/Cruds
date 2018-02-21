@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="jumbotron">
+    <form #forms="ngForm" (ngSubmit)="Add(forms)">
+
+      <label class="form-group">
+        Name:
+      </label>
+      <input type="text" class="form-control" name="Name" [(ngModel)]="user.name">
+
+      <br>
+      <label class="form-group">
+        Email:
+      </label>
+      <input type="text" class="form-control" name="Email" [(ngModel)]="user.email">
+      <br>
+      <label class="form-group">
+        
+      </label>
+      <input type="text" class="form-control" name="Contact" [(ngModel)]="user.phoneNumber">
+
+      <br>
+      <button class="btn btn-primary" type="submit" name="button">Add </button>
+    </form>
+  </div>
+</div>
+
+Employee data ={{forms.value | json}}
+<br> {{user.Name}}
+<br> {{user.Email}}
+<br> {{user.Contact}}
+<br>
+
+<div *ngIf="emp">
+  <div class="container">
+    <div class="jumbotron">
+
+      <div *ngFor="let empdetail of emp; let i=index">
+        <div>Name: {{empdetail.Name}}</div>
+        <div>Email: {{empdetail.Email}}</div>
+        <div>Contact: {{empdetail.Contact}}</div>
+        <br>
+        <button (click)="Edit(empdetail)" type="button" class="btn btn-info">Edit</button>
+        <button (click)="Remove(i)" type="button" class="btn btn-info">Remove</button>
+        <div>
+          <hr style="border-top: 1px solid rgb(0, 0, 0)">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

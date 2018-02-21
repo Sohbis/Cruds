@@ -1,0 +1,25 @@
+<p>Page works</p>
+ 
+<div *ngIf="employee">
+   
+  <div>Emplyee:  {{employee}}
+
+  </div>
+  <div class="container">
+    <div class="jumbotron">
+    
+      <div *ngFor="let empdetail of employee; let i=index">
+        <div>Name: {{empdetail.name}}</div>
+        <div>Email: {{empdetail.email}}</div>
+        <div>Contact: {{empdetail.phoneNumber}}</div>
+        <br>
+        <button (click)="Edit(empdetail,i)" type="button" class="btn btn-info">Edit</button>
+        <button (click)="Remove(i)" type="button" class="btn btn-info">Remove</button>
+        <div>
+          <hr style="border-top: 1px solid rgb(0, 0, 0)">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
