@@ -17,8 +17,9 @@ export class TemplateFormComponent implements OnInit {
   // Name: string;
   // Email: string;
   // Contact: number;
+    
 
-  constructor() { }
+  constructor( private instance : EmpServiceService ) { }
 
 user: Employee =
 {
@@ -35,8 +36,8 @@ user: Employee =
     console.log(form.value);
     
     this.emp.push(form.value);
+    this.instance.empD(form.value);
 
-    console.log(this.emp);
     // this.user.name = '';
     // this.user.email = '';
     // this.user.phoneNumber = null;
@@ -51,6 +52,9 @@ user: Employee =
 
     this.emp.splice(EmployeeDetail, 1);
 
+  }
+  getData() {
+    console.log(this.instance.getData());
   }
 
   ngOnInit() {

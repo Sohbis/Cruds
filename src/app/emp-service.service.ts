@@ -3,13 +3,21 @@ import { Employee} from './Model/employee.model';
 @Injectable()
 export class EmpServiceService {
 
-  newData: Employee;
+  newData: Employee[] = [];
   newDetail: Employee;
   constructor() { }
 
  empD(data)
  {
-  this.newData=data;
+  // this.newData=data;
+  this.newData.push(data);
+  console.log('called', data);
+ }
+
+ 
+
+ getData() {
+ 	return this.newData;
  }
 
 Editdetail(newDetail, i)

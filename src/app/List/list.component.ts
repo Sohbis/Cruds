@@ -45,8 +45,8 @@ export class ListComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.employee.push(this.instance.newData);
-    console.log(this.employee) ;
+    this.employee = this.instance.getData();
+    console.log('employees data here',this.employee);
   }
 
 }
