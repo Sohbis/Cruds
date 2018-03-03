@@ -15,6 +15,8 @@ export class ListComponent implements OnInit {
 
   employee:any []=[];
 
+  isUpdate=false;
+
   constructor(private instance: EmpServiceService) { }
  
   // get EmpDetail():Employee[] {
@@ -41,11 +43,13 @@ export class ListComponent implements OnInit {
   Edit(EmployeeDetail,i) 
   {
     console.log(EmployeeDetail);
-
+    this.isUpdate=!this.isUpdate;
+    this.instance.Edit(this.isUpdate);
+    this.instance.Editdetail(EmployeeDetail,i);
 
   }
   ngOnInit() {
-    this.employee = this.instance.getData();
+    this.employee = this.instance.newData;
     console.log('employees data here',this.employee);
   }
 

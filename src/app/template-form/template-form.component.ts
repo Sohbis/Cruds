@@ -13,7 +13,7 @@ import { EmpServiceService} from '../emp-service.service'
 
 export class TemplateFormComponent implements OnInit {
 
-
+isUpdate: boolean =false;
   // Name: string;
   // Email: string;
   // Contact: number;
@@ -34,18 +34,28 @@ user: Employee =
   Add(form: NgForm) {
     
     console.log(form.value);
-    
-    this.emp.push(form.value);
+    this.user=form.value;
+    this.emp.push(this.user);
     this.instance.empD(form.value);
 
-    // this.user.name = '';
-    // this.user.email = '';
-    // this.user.phoneNumber = null;
+    this.user.name = '';
+    this.user.email = '';
+    this.user.phoneNumber = null;
 
   }
 
   Edit(EmployeeDetail) {
-    this.user = EmployeeDetail;
+    this.user.name = EmployeeDetail.Name;
+    this.isUpdate=true;
+  }
+    Update(forms: NgForm, i) {
+    this.emp.splice(i, 1);
+    this.emp.push(forms.value);
+    // this.employee.name = '';
+    // this.employee.email = '';
+    // this.employee.phoneNumber = null;
+    this.isUpdate = !this.isUpdate;
+    console.log(this.isUpdate);
   }
 
   Remove(EmployeeDetail) {
@@ -54,10 +64,17 @@ user: Employee =
 
   }
   getData() {
-    console.log(this.instance.getData());
+    // console.log(this.instance.getData());
   }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
+  
+  this.isUpdate=this.instance._isUpdate;
+if(this.isUpdate){
+  this.user.name = this.instance.newDetail.name;
+  console.log("User--->" + this.instance.Editdetail.name);
+}
   }
 
 }

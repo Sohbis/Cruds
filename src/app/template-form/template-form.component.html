@@ -19,8 +19,10 @@
       <input type="text" class="form-control" name="Contact" [(ngModel)]="user.phoneNumber">
 
       <br>
-      <button class="btn btn-primary" type="submit" name="button">Add </button>
-        <button class="btn btn-primary" type="button" (click)="getData()" >Get </button>
+      <button class="btn btn-primary" type="submit" name="button" *ngIf='!isUpdate'>Add </button>
+        <!-- <button class="btn btn-primary" type="button" (click)="getData()" >Get </button> -->
+              <button class="btn btn-primary" (click)="Update(forms,index)" type="submit" name="button" *ngIf='isUpdate'>Update </button>
+
     </form>
   </div>
 </div>
