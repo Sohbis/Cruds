@@ -44,8 +44,8 @@ user: Employee =
     this.index=i;
   }
     Update(forms: NgForm, i) {
-    this.emp.splice(this.index, 1);
-    this.emp.push(forms.value);
+    this.emp.splice(this.index, 1,forms.value);
+    // this.emp.push(forms.value);
     this.instance.NewData(forms,this.index);
     // this.employee.name = '';
     // this.employee.email = '';
@@ -68,7 +68,7 @@ user: Employee =
   
   this.isUpdate=this.instance._isUpdate;
 if(this.isUpdate){
-  // this.user.name = this.instance.newDetail.name;
+  this.user.name = this.instance.newDetail.name;
   // console.log("User--->" + this.instance.Editdetail.name);
 }
   }

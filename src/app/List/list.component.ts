@@ -17,7 +17,7 @@ export class ListComponent implements OnInit {
 
   isUpdate=false;
 
-  isEdit;
+  
 
   constructor(private instance: EmpServiceService) { }
  
@@ -46,5 +46,7 @@ export class ListComponent implements OnInit {
     // this.isEdit=this.instance.isEdit;
     // console.log('employees data here',this.employee);
   }
-
+  get isEdit(): boolean {
+    return this.instance.isEdit;
+  }
 }

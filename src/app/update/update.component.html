@@ -1,4 +1,10 @@
-<p>
-  update works!
-</p>
+
+<div *ngIf='isEdit; else list'>
+  <p>
+    update works!
+  </p>
 <app-template-form></app-template-form>
+</div>
+<ng-template #list>
+  <app-list></app-list>
+</ng-template>

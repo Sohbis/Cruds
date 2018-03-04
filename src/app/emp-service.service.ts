@@ -48,8 +48,8 @@ Editdetail(newDetail, i)
 } 
   NewData(forms: NgForm, i) 
   {
-    this.newData.splice(this.index, 1);
-    this.newData.push(forms.value); 
+    this.newData.splice(this.index, 1,forms.value);
+    // this.newData.push(forms.value); 
     this.newDetail.name='';
     this._isUpdate = !this._isUpdate;
     this.isEdit=!this.isEdit;

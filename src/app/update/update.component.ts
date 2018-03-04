@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmpServiceService } from '../emp-service.service'
 
 @Component({
   selector: 'app-update',
@@ -7,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private instance: EmpServiceService ) { }
+  get isEdit(): boolean {
+    return this.instance.isEdit;
+  }
   ngOnInit() {
   }
 
