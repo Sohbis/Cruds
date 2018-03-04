@@ -1,4 +1,5 @@
 <div style="padding:5px">
+   <div *ngIf='!isEdit'>
     <ul class="nav nav-tabs">
         <li routerLinkActive="active">
             <a routerLink="Form">Form</a>
@@ -7,6 +8,8 @@
             <a routerLink="List">List</a>
         </li>
     </ul>
+   </div>
+    <!-- <a routerLink="Update">Update</a> -->
     <br/>
     <router-outlet></router-outlet>
 </div>

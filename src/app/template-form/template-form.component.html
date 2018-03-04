@@ -14,14 +14,14 @@
       <input type="text" class="form-control" name="Email" [(ngModel)]="user.email">
       <br>
       <label class="form-group">
-        
+        Contact:
       </label>
       <input type="text" class="form-control" name="Contact" [(ngModel)]="user.phoneNumber">
 
       <br>
       <button class="btn btn-primary" type="submit" name="button" *ngIf='!isUpdate'>Add </button>
         <!-- <button class="btn btn-primary" type="button" (click)="getData()" >Get </button> -->
-              <button class="btn btn-primary" (click)="Update(forms,index)" type="submit" name="button" *ngIf='isUpdate'>Update </button>
+              <a routerLink='List'><button class="btn btn-primary" (click)="Update(forms,index)" type="submit" name="button" *ngIf='isUpdate'>Update </button></a>
 
     </form>
   </div>
@@ -42,7 +42,7 @@ Employee data ={{forms.value | json}}
         <div>Email: {{empdetail.Email}}</div>
         <div>Contact: {{empdetail.Contact}}</div>
         <br>
-        <button (click)="Edit(empdetail)" type="button" class="btn btn-info">Edit</button>
+        <button (click)="Edit(empdetail,i)" type="button" class="btn btn-info">Edit</button>
         <button (click)="Remove(i)" type="button" class="btn btn-info">Remove</button>
         <div>
           <hr style="border-top: 1px solid rgb(0, 0, 0)">

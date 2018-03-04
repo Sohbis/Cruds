@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EmpServiceService } from './emp-service.service'
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  constructor(private instance: EmpServiceService) { }
+  get isEdit(): boolean {
+    return this.instance.isEdit;
+  }
 }
 

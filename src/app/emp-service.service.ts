@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Employee} from './Model/employee.model';
+import { NgForm } from '@angular/forms';
 @Injectable()
 export class EmpServiceService {
-
+  isUpdate: boolean = false;
+  index;
+  isEdit=false;
   newData: Employee[] = [];
   newDetail: Employee=
   {
@@ -18,7 +21,7 @@ export class EmpServiceService {
  {
   // this.newData=data;
   this.newData.push(data);
-  // console.log('called', data);
+   console.log('called', data);
  }
 
  
@@ -37,11 +40,19 @@ Editdetail(newDetail, i)
   // this._newDetail.email = newDetail.email;
 
   this.newDetail.name=newDetail.Name;
+
+  this.index=i;
+
   console.log(newDetail.Name);
    
 } 
-NewData():Employee{
-  return this.newDetail;
+  NewData(forms: NgForm, i) 
+  {
+    this.newData.splice(this.index, 1);
+    this.newData.push(forms.value); 
+    this.newDetail.name='';
+    this._isUpdate = !this._isUpdate;
+    this.isEdit=!this.isEdit;
 
-}
+  }
 }

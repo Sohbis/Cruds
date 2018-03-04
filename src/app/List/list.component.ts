@@ -17,6 +17,8 @@ export class ListComponent implements OnInit {
 
   isUpdate=false;
 
+  isEdit;
+
   constructor(private instance: EmpServiceService) { }
  
   // get EmpDetail():Employee[] {
@@ -24,33 +26,25 @@ export class ListComponent implements OnInit {
   //   return this.Instance.emp;
   // }
 
-
-
   Remove(EmployeeDetail) {
 
     this.employee.splice(EmployeeDetail, 1);
 
   }
-  // Update(forms: NgForm, i) {
-  //   // this.employee = forms.value;
-  //   this.employee.splice(i, 1);
-  //   this.employee.push(forms.value);
-  //   // this.employee.name = '';
-  //   // this.employee.email = '';
-  //   // this.employee.phoneNumber = null;
-  //   // this.update = !this.update;
-  // }
+
   Edit(EmployeeDetail,i) 
   {
     console.log(EmployeeDetail);
     this.isUpdate=!this.isUpdate;
     this.instance.Edit(this.isUpdate);
     this.instance.Editdetail(EmployeeDetail,i);
+    this.instance.isEdit=true;
 
   }
   ngOnInit() {
     this.employee = this.instance.newData;
-    console.log('employees data here',this.employee);
+    // this.isEdit=this.instance.isEdit;
+    // console.log('employees data here',this.employee);
   }
 
 }
