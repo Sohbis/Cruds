@@ -2,7 +2,7 @@ import { Component, OnInit, Output, Input } from '@angular/core';
 import { Employee } from '../Model/employee.model';
 import { NgForm } from '@angular/forms';
 import { Injectable } from '@angular/core';
-import { EmpServiceService } from '../emp-service.service'
+import { EmpServiceService } from '../emp-service.service';
 
 
 @Component({
@@ -13,14 +13,14 @@ import { EmpServiceService } from '../emp-service.service'
 
 export class ListComponent implements OnInit {
 
-  employee:any []=[];
+  employee: any [] = [];
 
-  isUpdate=false;
+  isUpdate = false;
 
-  
+
 
   constructor(private instance: EmpServiceService) { }
- 
+
   // get EmpDetail():Employee[] {
   //   console.log(this.Instance.emp);
   //   return this.Instance.emp;
@@ -32,13 +32,12 @@ export class ListComponent implements OnInit {
 
   }
 
-  Edit(EmployeeDetail,i) 
-  {
+  Edit(EmployeeDetail, i) {
     console.log(EmployeeDetail);
-    this.isUpdate=!this.isUpdate;
+    this.isUpdate = !this.isUpdate;
     this.instance.Edit(this.isUpdate);
-    this.instance.Editdetail(EmployeeDetail,i);
-    this.instance.isEdit=true;
+    this.instance.Editdetail(EmployeeDetail, i);
+    this.instance.isEdit = true;
 
   }
   ngOnInit() {
