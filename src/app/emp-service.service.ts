@@ -11,7 +11,7 @@ export class EmpServiceService {
   {
     name: '',
     email: '',
-    phoneNumber: null
+    contact: null
   };
 
   _isUpdate = false;
