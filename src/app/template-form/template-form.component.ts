@@ -23,7 +23,6 @@ user: Employee =
 {
   name: '',
   email: '',
-  phoneNumber: null,
   contact: null
 };
 
