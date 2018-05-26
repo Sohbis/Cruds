@@ -16,7 +16,7 @@ const appRoutes: Routes = [
   { path: 'List/Update', component: UpdateComponent },
   { path: 'List/Update/List', component: ListComponent },
 
-  { path: '', redirectTo: '/Form', pathMatch: 'full' },
+  { path: '**', redirectTo: '/Form', pathMatch: 'full' },
 
 ];
 
