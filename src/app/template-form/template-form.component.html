@@ -59,9 +59,9 @@ Employee data ={{forms.value | json}}
     <div class="jumbotron">
 
       <div *ngFor="let empdetail of emp; let i=index">
-        <div>Name: {{empdetail.Name}}</div>
-        <div>Email: {{empdetail.Email}}</div>
-        <div>Contact: {{empdetail.Contact}}</div>
+        <div>Name: {{empdetail.name}}</div>
+        <div>Email: {{empdetail.email}}</div>
+        <div>Contact: {{empdetail.contact}}</div>
         <br>
         <button (click)="Edit(empdetail,i)" type="button" class="btn btn-info">Edit</button>
         <button (click)="Remove(i)" type="button" class="btn btn-info">Remove</button>
