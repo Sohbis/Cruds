@@ -1,7 +1,7 @@
 export class Employee {
 
-    name: String;
-    email?: String;
+    name: string;
+    email?: string;
     phoneNumber?: number;
-
+    contact: any;
 }
