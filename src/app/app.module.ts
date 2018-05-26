@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { EmpServiceService } from './emp-service.service'
+import { EmpServiceService } from './emp-service.service';
 
 
 import { AppComponent } from './app.component';
@@ -23,7 +23,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    TemplateFormComponent,ListComponent, UpdateComponent
+    TemplateFormComponent, ListComponent, UpdateComponent
   ],
   imports: [
     BrowserModule, FormsModule, RouterModule.forRoot(appRoutes, { useHash: true })

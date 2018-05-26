@@ -5,13 +5,33 @@
       <label class="form-group">
         Name:
       </label>
-      <input type="text" class="form-control" name="Name" [(ngModel)]="user.name">
-
+      <input type="text" class="form-control"   name="Name" 
+     required pattern="[A-Za-z]{3}"
+      [(ngModel)]="user.name" #NameField="ngModel">
+       
+      <div *ngIf="NameField?.touched" >
+          <div *ngIf="NameField.errors?.required"class="alert alert-danger">
+            Name required.
+          </div>
+          <div *ngIf="NameField.errors?.pattern"class="alert alert-danger">
+            Name not valid.
+          </div>
+        </div>
       <br>
       <label class="form-group">
         Email:
       </label>
-      <input type="text" class="form-control" name="Email" [(ngModel)]="user.email">
+      <input type="text" class="form-control" name="Email" [(ngModel)]="user.email"
+      required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" #Email="ngModel"
+      >
+      <div *ngIf="Email?.touched">
+        <div *ngIf="Email.errors?.required" class="alert alert-danger">
+         Email required.
+        </div>
+        <div *ngIf="Email.errors?.pattern"class="alert alert-danger">
+          Email not valid.
+        </div>
+      </div>
       <br>
       <label class="form-group">
         Contact:
@@ -19,7 +39,8 @@
       <input type="text" class="form-control" name="Contact" [(ngModel)]="user.phoneNumber">
 
       <br>
-      <button class="btn btn-primary" type="submit" name="button" *ngIf='!isUpdate'>Add </button>
+      <button class="btn btn-primary" type="submit" name="button" *ngIf='!isUpdate' 
+      [disabled] ="forms.invalid">Add </button>
         <!-- <button class="btn btn-primary" type="button" (click)="getData()" >Get </button> -->
               <a routerLink='List'><button class="btn btn-primary" (click)="Update(forms,index)" type="submit" name="button" *ngIf='isUpdate'>Update </button></a>
 
