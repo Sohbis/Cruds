@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
 import { Employee } from '../Model/employee.model';
 import {NgForm} from '@angular/forms';
-import { ListComponent} from '../list/list.component';
+import { ListComponent} from '../List/list.component';
 import { EmpServiceService} from '../emp-service.service';
 
 @Component({

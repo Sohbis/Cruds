@@ -7,7 +7,7 @@ import { EmpServiceService } from './emp-service.service';
 
 import { AppComponent } from './app.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
-import { ListComponent } from './list/list.component';
+import { ListComponent } from './List/list.component';
 import { UpdateComponent } from './update/update.component';
 
 const appRoutes: Routes = [
