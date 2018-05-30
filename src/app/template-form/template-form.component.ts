@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
 import { Employee } from '../Model/employee.model';
 import { EMPDATA } from '../Model/empdata';
-
+import { Injectable } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { ListComponent} from '../List/list.component';
 import { EmpServiceService} from '../emp-service.service';
@@ -50,7 +50,7 @@ empdata: Employee[]=[];
 
   // Edit(EmployeeDetail, i) {
   //   this.user.name = EmployeeDetail.Name;
-  //   this.isUpdate = true;
+  //   // this.isUpdate = true;
   //   this.index = i;
   // }
   //   Update(forms: NgForm, i) {

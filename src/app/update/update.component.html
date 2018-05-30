@@ -1,10 +1,59 @@
+<p>
+  update works!
+</p>
+<!-- <div *ngIf='isEdit; else list'> -->
+<div>
+<div class="container">
+  <div class="jumbotron">
+    <form #forms="ngForm">
 
-<div *ngIf='isEdit; else list'>
-  <p>
-    update works!
-  </p>
-<app-template-form></app-template-form>
+      <label class="form-group">
+        Name:
+      </label>
+      <input type="text" class="form-control" name="name" required pattern="[A-Za-z]{3}" [(ngModel)]="user.name" #NameField="ngModel">
+
+      <div *ngIf="NameField?.touched">
+        <div *ngIf="NameField.errors?.required" class="alert alert-danger">
+          Name required.
+        </div>
+        <div *ngIf="NameField.errors?.pattern" class="alert alert-danger">
+          Name not valid.
+        </div>
+      </div>
+      <br>
+      <label class="form-group">
+        Email:
+      </label>
+      <input type="text" class="form-control" name="email" [(ngModel)]="user.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+        #email="ngModel">
+      <div *ngIf="Email?.touched">
+        <div *ngIf="Email.errors?.required" class="alert alert-danger">
+          Email required.
+        </div>
+        <div *ngIf="Email.errors?.pattern" class="alert alert-danger">
+          Email not valid.
+        </div>
+      </div>
+      <br>
+      <label class="form-group">
+        Contact:
+      </label>
+      
+      <input type="text" class="form-control" name="contact" [(ngModel)]="user.contact">
+
+      <br>
+      <!-- <button class="btn btn-primary" type="button" (click)="getData()" >Get </button> -->
+      <a routerLink="/List" >
+        <button  class="btn btn-primary" (click)="Update(forms)" type="submit" name="button"  [disabled] ="forms.invalid">Update </button>
+      </a>
+
+    </form>
+  </div>
 </div>
+
+
+
+
 <ng-template #list>
   <app-list></app-list>
 </ng-template>

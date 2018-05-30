@@ -1,8 +1,7 @@
-<p>Page works</p>
  
 <div *ngIf="employee">
    
-  <div>Emplyee:  {{employee}}
+  <!-- <div>Emplyee:  {{employee}} -->
 
   </div>
   <div class="container">
@@ -13,8 +12,12 @@
         <div>Email: {{empdetail.email}}</div>
         <div>Contact: {{empdetail.contact}}</div>
         <br>
-         <a routerLink="Update"><button (click)="Edit(empdetail,i)" type="button" class="btn btn-info" >Edit</button></a>
-        <button (click)="Remove(i)" type="button" class="btn btn-info">Remove</button>
+         <!-- <a routerLink="Update"><button (click)="Edit(empdetail,i)" type="button" class="btn btn-info" >Edit</button></a> -->
+          <a [routerLink]="['/Update', empdetail.id]">
+            <button type="button" class="btn btn-info">Edit</button>
+          </a>
+        <a routerLink="/Link">
+          <button (click)="Remove(empdetail)" type="button" class="btn btn-info">Remove</button></a>
         <div>
           <hr style="border-top: 1px solid rgb(0, 0, 0)">
         </div>
@@ -22,4 +25,4 @@
 
     </div>
   </div>
-</div>
+

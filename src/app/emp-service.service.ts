@@ -8,11 +8,12 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response } from '@angular/http';
 import { baseURL } from './baseurl';
+import { stringify } from 'querystring';
 
 @Injectable()
 export class EmpServiceService {
   isUpdate = false;
-  index;
+url:string;
   isEdit = false;
   newData: Employee[] = [];
   newDetail: Employee =
@@ -32,18 +33,32 @@ export class EmpServiceService {
  }
 
  postEmp(value):Observable<Employee[]> {
-    // return Observable.of(value);
     console.log(value);
     return this.http.post(baseURL +'list', value).map(res => res.json());
  
-    // this.newData.push(value);
-    // return this.getData();
-
   }
 
  getData(): Observable<Employee[]> {
-   return this.http.get(baseURL+'list').map(res=>res.json());
+  console.log('called'); 
+  return this.http.get(baseURL+'list').map(res=>res.json());
  }
+  
+ EmpData(id:number): Observable<Employee> {
+    this.url = baseURL + 'list/' + id;
+    return this.http.get(this.url).map(res => res.json());
+  }
+
+  UpdateEmp(value): Observable<Employee[]> {
+   
+    return this.http.put(this.url, value).map(res => res.json());
+
+  }
+
+  DeleteEmp(value): Observable<Employee[]> {
+
+    return this.http.delete(baseURL+'list/'+value.id,value).map(res=>res.json());
+
+  }
 Edit(isUpdate) {
 this._isUpdate = isUpdate;
 console.log(this._isUpdate);
@@ -54,17 +69,17 @@ Editdetail(newDetail, i) {
 
   this.newDetail.name = newDetail.Name;
 
-  this.index = i;
 
   console.log(newDetail.Name);
 
-}
-  NewData(forms: NgForm, i) {
-    this.newData.splice(this.index, 1, forms.value);
-    // this.newData.push(forms.value);
-    this.newDetail.name = '';
-    this._isUpdate = !this._isUpdate;
-    this.isEdit = !this.isEdit;
+// }
+//   NewData(forms: NgForm, i) {
+//     this.newData.splice(this.index, 1, forms.value);
+//     // this.newData.push(forms.value);
+//     this.newDetail.name = '';
+//     this._isUpdate = !this._isUpdate;
+//     this.isEdit = !this.isEdit;
 
-  }
+//   }
+}
 }

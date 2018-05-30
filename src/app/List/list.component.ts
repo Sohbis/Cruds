@@ -1,8 +1,9 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
 import { Employee } from '../Model/employee.model';
 import { NgForm } from '@angular/forms';
-import { Injectable } from '@angular/core';
+// import { Injectable } from '@angular/core';
 import { EmpServiceService } from '../emp-service.service';
+import { TemplateFormComponent } from '../template-form/template-form.component';
 
 
 @Component({
@@ -19,33 +20,36 @@ export class ListComponent implements OnInit {
 
 
 
-  constructor(private instance: EmpServiceService) { }
+  constructor(private instance: EmpServiceService ) {
+
+   }
 
   // get EmpDetail():Employee[] {
   //   console.log(this.Instance.emp);
   //   return this.Instance.emp;
   // }
 
-  Remove(EmployeeDetail) {
+  // Remove(EmployeeDetail) {
 
-    this.employee.splice(EmployeeDetail, 1);
+  //   this.employee.splice(EmployeeDetail, 1);
 
-  }
+  // }
 
   Edit(EmployeeDetail, i) {
     console.log(EmployeeDetail);
-    this.isUpdate = !this.isUpdate;
-    this.instance.Edit(this.isUpdate);
-    this.instance.Editdetail(EmployeeDetail, i);
-    this.instance.isEdit = true;
-
+    // this.isUpdate = !this.isUpdate;
+    // this.instance.Edit(this.isUpdate);
+    // this.instance.Editdetail(EmployeeDetail, i);
+    // this.instance.isEdit = true;
   }
   ngOnInit() {
-    // this.employee = this.instance.newData;
         this.instance.getData().subscribe(emp => this.employee =emp);
+  }
 
-    // this.isEdit=this.instance.isEdit;
-    // console.log('employees data here',this.employee);
+  Remove(value) {
+
+    console.log(value.id);
+    this.instance.DeleteEmp(value).subscribe(_=>this.instance.getData());
   }
   get isEdit(): boolean {
     return this.instance.isEdit;

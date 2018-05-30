@@ -14,7 +14,7 @@ import { baseURL } from './baseurl';
 const appRoutes: Routes = [
   { path: 'Form', component: TemplateFormComponent },
   { path: 'List', component: ListComponent },
-  { path: 'List/Update', component: UpdateComponent },
+  { path: 'Update/:id', component: UpdateComponent },
   { path: 'List/Update/List', component: ListComponent },
 
   { path: '**', redirectTo: '/Form', pathMatch: 'full' },

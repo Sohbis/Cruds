@@ -39,36 +39,15 @@
       <input type="text" class="form-control" name="contact" [(ngModel)]="user.contact">
 
       <br>
+      
       <button class="btn btn-primary" type="submit" name="button" *ngIf='!isUpdate' 
       [disabled] ="forms.invalid">Add </button>
         <!-- <button class="btn btn-primary" type="button" (click)="getData()" >Get </button> -->
-              <a routerLink='List'><button class="btn btn-primary" (click)="Update(forms,index)" type="submit" name="button" *ngIf='isUpdate'>Update </button></a>
+              
+              <!-- <a routerLink='List'><button class="btn btn-primary" (click)="Update(forms,index)" type="submit" name="button" *ngIf='isUpdate'>Update </button></a> -->
 
     </form>
   </div>
 </div>
 
-<!-- Employee data ={{forms.value | json}}
-<br> {{user.name}}
-<br> {{user.email}}
-<br> {{user.contact}} -->
-<br>
 
-<div *ngIf="empdata">
-  <div class="container">
-    <div class="jumbotron">
-{{empdata.name}}
-
-     <!--  <div *ngFor=let empdetail of empdata; let i=index>
-        <div>Name: {{empdetail.name}}</div>
-        <div>Email: {{empdetail.email}}</div>
-        <div>Contact: {{empdetail.contact}}</div>
-        <br>
-        <button (click)="Edit(empdetail,i)" type="button" class="btn btn-info">Edit</button>
-        <button (click)="Remove(i)" type="button" class="btn btn-info">Remove</button>
-        <div>
-          <hr style="border-top: 1px solid rgb(0, 0, 0)">
-        </div>
-      </div> -->
-
-    </div>
