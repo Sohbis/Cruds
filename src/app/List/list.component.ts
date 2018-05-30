@@ -13,7 +13,7 @@ import { EmpServiceService } from '../emp-service.service';
 
 export class ListComponent implements OnInit {
 
-  employee: any [] = [];
+  employee: Employee [] ;
 
   isUpdate = false;
 
@@ -41,7 +41,9 @@ export class ListComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.employee = this.instance.newData;
+    // this.employee = this.instance.newData;
+        this.instance.getData().subscribe(emp => this.employee =emp);
+
     // this.isEdit=this.instance.isEdit;
     // console.log('employees data here',this.employee);
   }

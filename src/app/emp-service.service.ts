@@ -1,6 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Employee} from './Model/employee.model';
 import { NgForm } from '@angular/forms';
+import { EMPDATA } from './Model/empdata';
+import 'rxjs/add/operator/delay';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
+import { Http, Response } from '@angular/http';
+import { baseURL } from './baseurl';
+
 @Injectable()
 export class EmpServiceService {
   isUpdate = false;
@@ -15,7 +23,7 @@ export class EmpServiceService {
   };
 
   _isUpdate = false;
-  constructor() { }
+  constructor(private http:Http) { }
 
  empD(data) {
   // this.newData=data;
@@ -23,10 +31,18 @@ export class EmpServiceService {
    console.log('called', data);
  }
 
+ postEmp(value):Observable<Employee[]> {
+    // return Observable.of(value);
+    console.log(value);
+    return this.http.post(baseURL +'list', value).map(res => res.json());
+ 
+    // this.newData.push(value);
+    // return this.getData();
 
+  }
 
- getData() {
-  return this.newData;
+ getData(): Observable<Employee[]> {
+   return this.http.get(baseURL+'list').map(res=>res.json());
  }
 Edit(isUpdate) {
 this._isUpdate = isUpdate;
