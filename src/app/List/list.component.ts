@@ -1,10 +1,9 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
 import { Employee } from '../Model/employee.model';
 import { NgForm } from '@angular/forms';
-// import { Injectable } from '@angular/core';
 import { EmpServiceService } from '../emp-service.service';
 import { TemplateFormComponent } from '../template-form/template-form.component';
-
+import {AngularFireList, AngularFireDatabase} from 'angularfire2/database';
 
 @Component({
   selector: 'app-list',
@@ -14,44 +13,40 @@ import { TemplateFormComponent } from '../template-form/template-form.component'
 
 export class ListComponent implements OnInit {
 
-  employee: Employee [] ;
+  employee: Employee [];
 
   isUpdate = false;
-
-
-
+  employeeList: Employee[] = [];
+  
   constructor(private instance: EmpServiceService ) {
 
    }
-
-  // get EmpDetail():Employee[] {
-  //   console.log(this.Instance.emp);
-  //   return this.Instance.emp;
+  // Edit(EmployeeDetail, i) {
+  //   console.log(EmployeeDetail);
   // }
-
-  // Remove(EmployeeDetail) {
-
-  //   this.employee.splice(EmployeeDetail, 1);
-
-  // }
-
-  Edit(EmployeeDetail, i) {
-    console.log(EmployeeDetail);
-    // this.isUpdate = !this.isUpdate;
-    // this.instance.Edit(this.isUpdate);
-    // this.instance.Editdetail(EmployeeDetail, i);
-    // this.instance.isEdit = true;
-  }
+  // ngOnInit() {
+  //       // this.instance.getData().subscribe(emp => this.employee =emp);
+  
+  //     }
   ngOnInit() {
-        this.instance.getData().subscribe(emp => this.employee =emp);
-  }
+    
+    console.log('getEmp called');
 
-  Remove(value) {
+    const x = this.instance.getEmp();
 
-    console.log(value.id);
-    this.instance.DeleteEmp(value).subscribe(_=>this.instance.getData());
-  }
-  get isEdit(): boolean {
-    return this.instance.isEdit;
+    x.snapshotChanges().subscribe(item => {
+
+      item.forEach(element => {
+
+        const y = element.payload.toJSON();
+
+        y['$key'] = element.key;
+
+        this.employeeList.push(y as Employee);
+
+      });
+
+    });
+
   }
 }

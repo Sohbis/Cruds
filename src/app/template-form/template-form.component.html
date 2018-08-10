@@ -27,7 +27,7 @@
         Email:
       </label>
       <input type="text" class="form-control" name="email" [(ngModel)]="user.email"
-      required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" #email="ngModel"
+       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" #email="ngModel"
       >
       <div *ngIf="Email?.touched">
         <div *ngIf="Email.errors?.required" class="alert alert-danger">
@@ -45,15 +45,11 @@
 
       <br>
       
-      <!-- <button class="btn btn-primary" type="submit" name="button" *ngIf='!isUpdate' 
-      [disabled] ="forms.invalid">Add </button> -->
+      <button class="btn btn-primary" type="submit" name="button" *ngIf='!isUpdate' 
+      [disabled] ="forms.invalid">Add </button>
 
-      <button class="btn btn-primary" type="submit" name="button">Add </button>
+      <!-- <button class="btn btn-primary" type="submit" name="button">Add </button> -->
         
-      <!-- <button class="btn btn-primary" type="button" (click)="getData()" >Get </button> -->
-              
-              <!-- <a routerLink='List'><button class="btn btn-primary" (click)="Update(forms,index)" type="submit" name="button" *ngIf='isUpdate'>Update </button></a> -->
-
     </form>
   </div>
 </div>

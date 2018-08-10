@@ -8,17 +8,35 @@ import { Observable } from 'rxjs/Observable';
 import { Http, Response } from '@angular/http';
 import { baseURL } from './baseurl';
 import { stringify } from 'querystring';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 @Injectable()
 export class EmpServiceService {
 
-  value: Employee = new Employee();
+
   isUpdate = false;
   url: string;
   isEdit = false;
 
   _isUpdate = false;
-  constructor(private http: Http) { }
+ 
+  employeelist: AngularFireList<any>;
+  value: Employee = new Employee();
+  constructor(private http: Http, private fireBase: AngularFireDatabase) {
+    this.employeelist = this.fireBase.list('list');
+  }
+
+  getEmp() {
+    return this.employeelist;
+  }
+
+  insertEmp(employee: Employee) {
+    this.employeelist.push({
+      name: employee.name,
+      email: employee.email,
+      contact: employee.contact
+    });
+  }
 
   postEmp(value): Observable<Employee[]> {
     console.log(value);

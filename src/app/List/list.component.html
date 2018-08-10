@@ -2,12 +2,11 @@
 <div *ngIf="employee">
    
   <!-- <div>Emplyee:  {{employee}} -->
-
   </div>
   <div class="container">
     <div class="jumbotron">
     
-      <div *ngFor="let empdetail of employee; let i=index">
+      <div *ngFor="let empdetail of employeeList; let i=index">
         <div>Name: {{empdetail.name}}</div>
         <div>Email: {{empdetail.email}}</div>
         <div>Contact: {{empdetail.contact}}</div>

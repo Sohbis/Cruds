@@ -2,9 +2,9 @@ import { Component, OnInit, Output, Input } from '@angular/core';
 import { Employee } from '../Model/employee.model';
 // import { EMPDATA } from '../Model/empdata';
 import { Injectable } from '@angular/core';
-import {NgForm} from '@angular/forms';
-import { ListComponent} from '../List/list.component';
-import { EmpServiceService} from '../emp-service.service';
+import { NgForm } from '@angular/forms';
+import { ListComponent } from '../List/list.component';
+import { EmpServiceService } from '../emp-service.service';
 import { FormBuilder, FormGroup, Validators, FormGroupDirective } from '@angular/forms';
 
 
@@ -15,25 +15,37 @@ import { FormBuilder, FormGroup, Validators, FormGroupDirective } from '@angular
 })
 
 
-export class TemplateFormComponent  {
+export class TemplateFormComponent implements OnInit {
 
-isUpdate = false;
-// index;
- constructor( private instance: EmpServiceService ) { }
-  user= this.instance.value;
+  isUpdate = false;
+  constructor(private instance: EmpServiceService) { }
+  user = this.instance.value;
 
-  // @Input()
- // empdata: Employee[] = [];
-
-
- 
+  ngOnInit() {
+    // this.Reset();
+  }
   Add(form: NgForm) {
 
     // this.instance.postEmp(form.value).subscribe(emp => this.empdata.unshift(form.value));
     // console.log(this.empdata);
-    this.instance.postEmp(form.value).subscribe(emp => console.log (form.value));
-  }
+    // this.instance.postEmp(form.value).subscribe(emp => console.log (form.value));
 
+    this.instance.insertEmp(form.value);
+    
+    // this.Reset(form);
+  }
+  Reset(form?: NgForm) {
+    if( form != null) {
+      form.reset();
+    }
+     
+    this.instance.value = {
+      $key: '',
+      name: '',
+      email: '',
+      contact: null,
+    };
+  }
 }
 
 
